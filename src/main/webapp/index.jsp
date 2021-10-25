@@ -45,14 +45,16 @@
         </thead>
         <tbody>
 
+        <c:set var="index" value="0"/>
         <c:forEach var="contact" items="${contacts}">
         <tr>
+            <c:set var="index" value="${index + 1}"/>
                 <td>
                     <label class="select-me-label">
                         <input type="checkbox" class="select-me"/>
                     </label>
                 </td>
-                <td></td>
+                <td>${index}</td>
                 <td>${contact.getFirstName()}</td>
                 <td>${contact.getLastName()}</td>
                 <td>${contact.getPhone()}</td>
