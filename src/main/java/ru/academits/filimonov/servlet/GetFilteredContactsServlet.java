@@ -17,11 +17,13 @@ public class GetFilteredContactsServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         try {
-            List<Contact> contactList = phoneBookService.getFilteredContacts(req.getParameter("query"));
-            String contactListJson = contactConverter.convertToJson(contactList);
-            resp.getOutputStream().write(contactListJson.getBytes(Charset.forName("UTF-8")));
-            resp.getOutputStream().flush();
-            resp.getOutputStream().close();
+            req.setCharacterEncoding("UTF-8");
+
+            List<Contact> contactList = phoneBookService.getFilteredContacts(req.getParameter("filterString"));
+
+            req.setAttribute("contacts", contactList);
+
+            getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
         } catch (Exception e) {
             System.out.println("error in GetAllContactsServlet GET: ");
             e.printStackTrace();

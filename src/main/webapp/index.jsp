@@ -17,14 +17,15 @@
 <body>
 <div id="app" class="content">
     <div class="filter-container">
-        <form method="get" action="${pageContext.request.contextPath}/phonebook/get/all">
+        <form method="get" action="${pageContext.request.contextPath}/phonebook/get/filteredContacts">
         <label class="mr-1">
             Введите текст:
-            <input type="text" class="form-control input-sm"/>
+            <input name="filterString" type="text" class="form-control input-sm"/>
         </label>
         <button class="btn btn-primary" type="submit">Отфильтровать</button>
-        <button class="btn btn-primary">Сбросить фильтр</button>
+        <button class="btn btn-primary" form="clear" type="submit">Сбросить фильтр</button>
         </form>
+        <form class="d-none" method="get" action="${pageContext.request.contextPath}/phonebook/get/all" id="clear"></form>
     </div>
 
 
