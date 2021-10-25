@@ -12,7 +12,6 @@ import java.util.List;
 
 public class GetAllContactsServlet extends HttpServlet {
     private ContactService phoneBookService = PhoneBook.phoneBookService;
-    private ContactConverter contactConverter = PhoneBook.contactConverter;
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         try {
