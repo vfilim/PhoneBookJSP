@@ -1,7 +1,6 @@
 package ru.academits.filimonov.servlet;
 
 import ru.academits.filimonov.PhoneBook;
-import ru.academits.filimonov.converter.ContactValidationConverter;
 import ru.academits.filimonov.model.Contact;
 import ru.academits.filimonov.service.ContactService;
 import ru.academits.filimonov.service.ContactValidation;
