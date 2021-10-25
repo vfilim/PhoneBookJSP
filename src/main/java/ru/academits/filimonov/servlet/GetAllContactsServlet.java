@@ -17,7 +17,6 @@ public class GetAllContactsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         try {
             List<Contact> contactList = phoneBookService.getAllContacts();
-            String contactListJson = contactConverter.convertToJson(contactList);
 
             req.setAttribute("contacts", contactList);
 
