@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 public class AddContactServlet extends HttpServlet {
 
     private ContactService phoneBookService = PhoneBook.phoneBookService;
-    private ContactValidationConverter contactValidationConverter = PhoneBook.contactValidationConverter;
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         try {
