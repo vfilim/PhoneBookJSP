@@ -8,7 +8,6 @@ import ru.academits.filimonov.service.ContactService;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.nio.charset.Charset;
 import java.util.List;
 
 public class GetFilteredContactsServlet extends HttpServlet {
