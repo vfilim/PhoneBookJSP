@@ -15,6 +15,8 @@ public class AddContactServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         try {
+            req.setCharacterEncoding("UTF-8");
+
             Contact contact = new Contact();
 
             contact.setFirstName(req.getParameter("firstName"));
