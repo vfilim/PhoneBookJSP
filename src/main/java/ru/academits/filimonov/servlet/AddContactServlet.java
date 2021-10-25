@@ -12,9 +12,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.OutputStream;
 import java.io.Writer;
-import java.util.stream.Collectors;
 
 public class AddContactServlet extends HttpServlet {
 
@@ -23,9 +21,12 @@ public class AddContactServlet extends HttpServlet {
     private ContactValidationConverter contactValidationConverter = PhoneBook.contactValidationConverter;
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
-        try (Writer responseStream = resp.getWriter()) {
-            String contactJson = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-            Contact contact = contactConverter.convertFormJson(contactJson);
+        try {
+            Contact contact = new Contact();
+
+            contact.setFirstName(req.getParameter("firstName"));
+            contact.setLastName(req.getParameter("lastName"));
+            contact.setPhone(req.getParameter("phone"));
 
             ContactValidation contactValidation = phoneBookService.addContact(contact);
             String contactValidationJson = contactValidationConverter.convertToJson(contactValidation);
@@ -33,9 +34,7 @@ public class AddContactServlet extends HttpServlet {
                 resp.setStatus(500);
             }
 
-           // responseStream.write(contactValidationJson.getBytes(Charset.forName("UTF-8")));
-
-            responseStream.write("ASDASDASDSD");
+            resp.sendRedirect("/phonebook/get/all");
         } catch (Exception e) {
             System.out.println("error in GetAllContactsServlet GET: ");
             e.printStackTrace();
