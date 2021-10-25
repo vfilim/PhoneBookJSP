@@ -59,7 +59,9 @@
                 <td>${contact.getLastName()}</td>
                 <td>${contact.getPhone()}</td>
                 <td>
-                    <button class="btn btn-primary" type="button">Удалить</button>
+                    <form action="${pageContext.request.contextPath}/phonebook/deleteContact" method="post" id="delete-id">
+                        <input name="id" value="${contact.getId()}" class="d-none">
+                    <button class="btn btn-primary" type="submit">Удалить</button></form>
                 </td>
         </tr>
         </c:forEach>

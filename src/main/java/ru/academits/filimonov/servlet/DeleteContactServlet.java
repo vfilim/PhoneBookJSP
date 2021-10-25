@@ -12,6 +12,8 @@ public class DeleteContactServlet extends HttpServlet {
     private ContactService phoneBookService = PhoneBook.phoneBookService;
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-            phoneBookService.deleteContactById(Integer.parseInt(req.getParameter("id")));
+        phoneBookService.deleteContactById(Integer.parseInt(req.getParameter("id")));
+
+        resp.sendRedirect("/phonebook/get/all");
     }
 }
